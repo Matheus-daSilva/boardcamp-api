@@ -11,6 +11,7 @@ import { postCustumers } from "./controllers/customersController.js";
 import { putCustumers } from "./controllers/customersController.js";
 import { postRental } from "./controllers/rentalsController.js";
 import { getRentals } from "./controllers/rentalsController.js";
+import { deleteRentals } from "./controllers/rentalsController.js";
 
 const app = express();
 app.use(json());
@@ -27,6 +28,7 @@ app.post("/customers", postCustumers);
 app.put("/customers/:id", putCustumers)
 app.get("/rentals", getRentals);
 app.post("/rentals", postRental);
+app.delete("/rentals/:id", deleteRentals);
 
 
 app.listen(process.env.PORT, () => console.log('O servidor está rodando'))
