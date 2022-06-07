@@ -31,7 +31,7 @@ export async function postGames(req, res) {
         if (stockTotal <= 0 && pricePerDay <= 0) return res.sendStatus(400);
 
         const categories = await connection.query(`
-        SELECT * FROM categories WHERE categoryId=$1`, [categoryId]);
+        SELECT * FROM categories WHERE id=$1`, [categoryId]);
 
         if (categories.rows.length !== 0) {
             res.sendStatus(409)
@@ -42,5 +42,6 @@ export async function postGames(req, res) {
         res.sendStatus(201)
     } catch (e) {
         res.status(500).send(e.message);
+        console.log(e)
     }
 }
